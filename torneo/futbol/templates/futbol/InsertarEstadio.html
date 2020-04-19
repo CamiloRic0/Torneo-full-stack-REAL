@@ -1,30 +1,31 @@
 {% extends 'base/base.html'%}
 
 {% block contenido %}
-    
+
 <div class="row">
-  
+
   <div class="col-sm-5 left" style="line-height:0; display:block; display:inline-block; top: -200px; z-index:1;">
-  <img src="../../static/images/izquierda.png" alt="">
+    <img src="../../static/images/izquierda.png" alt="">
   </div>
 
   <div class="col-sm-2" style="z-index:2;">
-<div class="login-boxx">
-  <img src="../../static/images/balon1.png" class="avatar" alt="Avatar Image">
-  <h1>Regístrar Estadio</h1>
-  <form>
-    {% csrf_token %}
-    {{form.as_p}}
-      <input type="submit" value="Registrar">
-  </form>
-  <div class="col-md-2">
-    <a class="btn btn-warning" href="{%  url 'futbol:home' %}">Home</a>
+    <div class="login-boxx">
+      <img src="../../static/images/balon1.png" class="avatar" alt="Avatar Image">
+      <h1>Regístrar Estadio</h1>
+      <form method="POST">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="Registrar">
+      </form>
+      <div class="col-md-2">
+        <a class="btn btn-warning" href="{%  url 'futbol:home' %}">Home</a>
+      </div>
+    </div>
   </div>
-</div>
-</div>
 
-<div class="col-sm-5 right" style="line-height:0; display:block; display:inline-block; top: -200px; left: -510px; z-index: 1;">
-  <img src="../../static/images/derecha.png" alt="">
+  <div class="col-sm-5 right"
+    style="line-height:0; display:block; display:inline-block; top: -200px; left: -510px; z-index: 1;">
+    <img src="../../static/images/derecha.png" alt="">
   </div>
 
 </div>

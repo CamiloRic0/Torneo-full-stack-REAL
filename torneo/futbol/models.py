@@ -9,6 +9,11 @@ class RolArbitro(models.Model):
     nombre = models.CharField(
         max_length = 25
     )
+    @classmethod
+    def create(cls, id, nombre):
+        id = cls(id=id)
+        nombre = cls(nombre=nombre)
+        return nombre
 
 class Pais(models.Model):
     id = models.IntegerField(
@@ -24,7 +29,7 @@ class Pais(models.Model):
     )
 
 class Torneo(models.Model):
-    id = models.IntegerField(
+    id = models.AutoField(
         primary_key = True
     )
     nombre = models.CharField(
@@ -33,7 +38,7 @@ class Torneo(models.Model):
     pais = models.ForeignKey(Pais, on_delete=models.DO_NOTHING)
 
 class Ciudad(models.Model):
-    codigo = models.IntegerField(
+    codigo = models.AutoField(
         primary_key = True,
     )
     nombre = models.CharField (max_length=40, unique = True)
@@ -61,8 +66,8 @@ class Arbitro(models.Model):
         primary_key = True,
     )
     nombre = models.CharField (max_length=40)
-    tutor_de_arbitro = models.OneToOneField('self', on_delete = models.DO_NOTHING, default="1", null = True)
-    rol = models.OneToOneField(RolArbitro, on_delete = models.DO_NOTHING, default="1")
+    tutor_de_arbitro = models.ForeignKey('self', on_delete = models.DO_NOTHING, default="1", null = True)
+    rol = models.ForeignKey(RolArbitro, on_delete = models.DO_NOTHING, default="1")
 
 class persona_natural(models.Model):
     cedula = models.IntegerField(
@@ -78,8 +83,8 @@ class Equipo(models.Model):
     ciudad = models.ForeignKey(Ciudad, on_delete = models.CASCADE)
     nombre = models.CharField (max_length=40)
     anno_creacion = models.CharField(max_length=4)
-    patrocinador_equipo = models.OneToOneField('self', on_delete = models.CASCADE, default="1", null=True)
-    patrocinador_persona_natural = models.OneToOneField(persona_natural, on_delete = models.CASCADE, default="1", null = True)
+    patrocinador_equipo = models.ForeignKey('self', on_delete = models.CASCADE, default="1", null=True)
+    patrocinador_persona_natural = models.ForeignKey(persona_natural, on_delete = models.CASCADE, default="1", null = True)
 
 class Empresa(models.Model):
     codigo = models.IntegerField(
@@ -88,15 +93,15 @@ class Empresa(models.Model):
     nombre = models.CharField (max_length=40, unique = True, default="nombre_empresa")
     representante_legal = models.CharField (max_length=40)
     email = models.CharField (max_length=60)
-    ciudad_sede_principal = models.OneToOneField(Ciudad, on_delete = models.DO_NOTHING, default="1")
-    equipo_patrocinado = models.OneToOneField(Equipo, on_delete = models.DO_NOTHING, default="1", null = True)
+    ciudad_sede_principal = models.ForeignKey(Ciudad, on_delete = models.DO_NOTHING, default="1")
+    equipo_patrocinado = models.ForeignKey(Equipo, on_delete = models.DO_NOTHING, default="1", null = True)
 
 class Jugador_Equipo(models.Model):
-    equipo_actual = models.OneToOneField(Equipo, on_delete = models.CASCADE, related_name="jugador_equipo_equipo")
-    jugador = models.OneToOneField(Jugador, on_delete = models.CASCADE)
+    equipo_actual = models.ForeignKey(Equipo, on_delete = models.CASCADE, related_name="jugador_equipo_equipo")
+    jugador = models.ForeignKey(Jugador, on_delete = models.CASCADE)
     fecha_inicial = models.DateField()
     fecha_final = models.DateField()
-    equipo_anterior = models.OneToOneField(Equipo, on_delete=models.DO_NOTHING, null = True)
+    equipo_anterior = models.ForeignKey(Equipo, on_delete=models.DO_NOTHING, null = True)
 
 class Partido(models.Model):
     arbitro = models.ForeignKey(Arbitro, on_delete = models.CASCADE, default="1")
