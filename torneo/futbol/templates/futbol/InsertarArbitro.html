@@ -11,12 +11,15 @@
   <div class="col-sm-2" style="z-index:2;">
 <div class="login-box">
   <img src="../../static/images/balon1.png" class="avatar" alt="Avatar Image" href="{% url 'futbol:home' %}">
-  <h1>Regístrar Evento</h1>
+  <h1>Crear Arbitro</h1>
   <form>
     {% csrf_token %}
     {{form.as_p}}
       <input type="submit" value="Registrar">
   </form>
+  <div class="col-md-2">
+    <a class="btn btn-warning" href="{%  url 'futbol:home' %}">Home</a>
+  </div>
 </div>
 </div>
 

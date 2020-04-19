@@ -107,7 +107,7 @@ class Partido(models.Model):
     hora = models.CharField(max_length=5)
     marcador = models.CharField(max_length=10)
     ganador = models.ForeignKey(Equipo, on_delete = models.CASCADE, null = True )
-    empate = models.CharField(max_length = 2, default="1", null = True)
+    empate = models.CharField(max_length = 2, default="--", null = True)
     nombre_torneo = models.ForeignKey(Torneo, on_delete=models.DO_NOTHING, default="1")
 
 class Jugador_Partido(models.Model):

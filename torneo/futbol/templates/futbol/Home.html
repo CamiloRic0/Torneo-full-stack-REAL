@@ -19,20 +19,26 @@
                 <td><a class="btn btn-primary tcol" href="{% url 'futbol:InsertarEstadio' %}">Registrar Estadio</a></td>
                 <td><a class="btn btn-primary tcol" href="{% url 'futbol:InsertarArbitro' %}">Crear Arbitro</a></td>
                 <td><a class="btn btn-primary tcol" href="{% url 'futbol:InsertarJugador' %}">Crear Jugador</a></td>
-                <td><a class="btn btn-primary tcol" href="{% url 'futbol:InsertarJugadorEquipo' %}">Conectar Jugador con un equipo</a></td>
-                <td><a class="btn btn-primary tcol" href="{% url 'futbol:InsertarJugadorPartido' %}">Asignar Jugador a Partido</a></td>
+                <td><a class="btn btn-primary tcol" href="{% url 'futbol:InsertarEquipo' %}">Crear Equipo</a></td>
+                <td><a class="btn btn-primary tcol" href="{% url 'futbol:InsertarJugadorEquipo' %}">Conectar Jugador con
+                        un equipo</a></td>
+                <td><a class="btn btn-primary tcol" href="{% url 'futbol:InsertarJugadorPartido' %}">Asignar Jugador a
+                        Partido</a></td>
                 <td><a class="btn btn-primary tcol" href="{% url 'futbol:InsertarEventoGol' %}">Registrar Gol</a></td>
-                <td><a class="btn btn-primary tcol" href="{% url 'futbol:InsertarEventoFalta' %}">Registrar Falta</a></td>
-                <td><a class="btn btn-primary tcol" href="{% url 'futbol:InsertarOtroEvento' %}">Registrar evento de partido</a></td>
-                <td><a class="btn btn-primary tcol" href="{% url 'futbol:InsertarPersonaNatural' %}">Registrar Persona Natural</a></td>
+                <td><a class="btn btn-primary tcol" href="{% url 'futbol:InsertarEventoFalta' %}">Registrar Falta</a>
+                </td>
+                <td><a class="btn btn-primary tcol" href="{% url 'futbol:InsertarOtroEvento' %}">Registrar evento de
+                        partido</a></td>
+                <td><a class="btn btn-primary tcol" href="{% url 'futbol:InsertarPersonaNatural' %}">Registrar Persona
+                        Natural</a></td>
                 <td><a class="btn btn-primary tcol" href="{% url 'futbol:InsertarEmpresa' %}">Registrar Empresa</a></td>
             </tr>
             <div class="row">
-            <div class="col-md-3"></div>
-        <div class="col-md-6">
-            <a class="btn btn-warning tcol move" href="{% url 'futbol:logout'%}">Cerrar sesión</a>
-        </div>
-    </div>
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <a class="btn btn-warning tcol move" href="{% url 'futbol:logout'%}">Cerrar sesión</a>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -42,4 +48,53 @@
     </div>
 
 </div>
-{% endblock %}
+
+<div class="row">
+
+    <div class="col-sm-1 left">
+    </div>
+
+    <div class="col-sm-10" style="z-index:2; top: -480px;">
+
+
+        <table class="table">
+
+            <tr>
+                <th>ID</th>
+                <th>Torneo</th>
+                <th>Arbitro</th>
+                <th>Estadio</th>
+                <th>Local</th>
+                <th>Visitante</th>
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>Marcador</th>
+                <th>Ganador</th>
+                <th>Empate</th>
+            </tr>
+
+            {% for item in obj%}
+            <tr>
+                <td>{{item.id}}</td>
+                <td>{{item.nombre_torneo}}</td>
+                <td>{{item.arbitro}}</td>
+                <td>{{item.estadio}}</td>
+                <td>{{item.equipo_local}}</td>
+                <td>{{item.equipo_visitante}}</td>
+                <td>{{item.fecha}}</td>
+                <td>{{item.hora}}</td>
+                <td>{{item.marcador}}</td>
+                <td>{{item.ganador}}</td>
+                <td>{{item.empate}}</td>
+            </tr>
+            {% endfor %}
+
+        </table>
+
+
+        <div class="col-sm-1 right">
+        </div>
+
+    </div>
+
+    {% endblock %}

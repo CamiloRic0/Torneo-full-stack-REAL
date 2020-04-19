@@ -135,7 +135,7 @@ class InsertarOtroEvento(LoginRequiredMixin, generic.CreateView):
 # Consults
 
 class Home(LoginRequiredMixin, generic.ListView):
-    model = Torneo
+    model = Partido
     template_name="futbol/Home.html"
     context_object_name="obj"
     login_url = 'futbol:login'
