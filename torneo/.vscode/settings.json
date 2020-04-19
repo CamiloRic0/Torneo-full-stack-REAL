@@ -1,0 +1,10 @@
+{
+"python.pythonPath": "/usr/local/bin/python3",
+"python.linting.pylintEnabled":true,
+"python.linting.pylintArgs":[
+"--max-parents=14",
+"--disable=C0111",
+"--load-plugins",
+"pylint_django"
+]
+}

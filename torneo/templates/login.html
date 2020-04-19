@@ -1,0 +1,310 @@
+{% extends 'base/base.html'%}
+{% load static %}
+{% block contenido %}
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&family=Rubik+Mono+One&display=swap');
+
+*
+{
+    box-sizing: border-box;
+    margin: 0;
+}
+body
+{
+    height: 100%;
+}
+main
+{
+    height:100%;
+    display:flex;
+
+}
+/*------------NAVBAR-----------------------------------------------------------*/
+
+
+
+
+.list_functions li
+{
+
+   margin-bottom: 35px;
+}
+
+.list_functions a
+{
+     text-decoration: none;
+    color: white;
+    font-size: 16pt;
+    font-family: 'Roboto', sans-serif;
+}
+
+.inner_function
+{
+    width: 220px;
+    height: 50px;
+    border-radius: 10px;
+    padding-top: 10px;
+    padding-left: 10px;
+    background-color: transparent;
+
+}
+.inner_function:hover
+{
+    background-color: #BA5CE1;
+}
+/*------------SECCION PRODUCTOS-----------------------------------------------------------*/
+.lupa
+{
+    fill: #793FC0;
+}
+
+.adminProduct
+{
+    margin: 0 80px 0 430px;
+    width: 80%;
+}
+.searchAdd_box
+{
+    display: flex;
+    margin-top: 30px;
+    justify-content: space-between;
+}
+.searchAdd_box input
+{
+    width: 398px;
+    background-color: transparent;
+    border: transparent;
+    border-bottom: solid #B5B5B5;
+}
+.productAdd_btn
+{
+    width: 268px;
+    background-color: #BA5CE1;
+    border: none;
+    color: white;
+    font-family: Roboto, sans-serif;
+}
+.productAdd_btn a
+{
+    color: white;
+    font-family: Roboto, sans-serif;
+    text-decoration: none;
+}
+
+table
+{
+    border-collapse: collapse;
+    border-spacing: 0 25px;
+}
+.cja_listDatos
+{
+
+    height: 250px;
+    padding: 0 30px;
+}
+
+.list_product
+{
+    width: 100%;
+
+    margin-top: 45px;
+    color: #652680;
+    font-size: 1vw;
+}
+.column_IdProduct
+{
+    width: 160px;
+}
+.column_nameProduct
+{
+    width: 225px;
+}
+.column_price
+{
+    width: 180px;
+}
+.column_priceSale
+{
+    width: 220px;
+}
+.fila_dato
+{
+
+    background-color: white;
+    border-bottom: 2px solid darkgrey;
+    color: #B5B5B5;
+}
+
+.fila_dato img
+{
+    width: 4vw;
+}
+.column_actions
+{
+    display: flex;
+    color: #793FC0;
+    justify-content: space-around;
+    padding: 30px 0 30px 0;
+    cursor: pointer;
+    text-decoration: underline;
+}
+.column_actions a
+{
+    color: #793FC0;
+    font-family: Roboto, sans-serif;
+    font-size: 1vw;
+}
+.section_graficas
+{
+    margin-top: 120px;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    padding: 0 30px;
+}
+.cja_historico
+{
+    width: 552px;
+    height: 450px;
+    color: #793FC0;
+}
+.cja_historico div
+{
+
+    width: 100%;
+    height: 90%;
+    border-radius: 3px;
+    border: 3px solid #793FC0;
+}
+
+.cja_top
+{
+    width: 552px;
+    height: 450px;
+    color: #793FC0;
+}
+.cja_top div
+{
+
+    width: 100%;
+    height: 90%;
+    border-radius: 3px;
+    border: 3px solid #793FC0;
+}
+
+/*------------PANTALLA CLIENTES-----------------------------------------------------------*/
+
+.fila_datoClient
+{
+    height: 100px;
+    background-color: white;
+    border-bottom: 2px solid darkgrey;
+    color: #B5B5B5;
+}
+.cja_vistas
+{
+    background-color: #793FC0;
+    color: white;
+
+}
+.cja_vistas h2
+{
+    font-family: Roboto, sans-serif;
+    padding: 80px;
+    font-size: 6vw;
+    text-align: center;
+}
+.column_email
+{
+    width: 300px;
+}
+
+
+/*------------LOGIN STYLES-----------------------------------------------------------*/
+
+body{
+     background-color: #254564;
+}
+
+
+.section_login
+{
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+.cja_imagenLogin
+{
+    width: 50%;
+    height: 100%;
+
+}
+
+.container_formLogin
+{
+    width: 50%;
+    height: 100%;
+
+
+}
+.inner_formLogin
+{
+    margin: 230px 50px;
+    height: 300px;
+}
+.inner_formLogin h1
+{
+    margin-bottom: 80px;
+    color: #F3B93A;
+    font-family: 'Rubik Mono One', sans-serif;
+    text-align: center;
+    font-size: 3vw;
+    padding-bottom:50px ;
+}
+.inner_formLogin form
+{
+   margin: 0 80px;
+}
+.inner_formLogin button
+{
+    background-color: #78C9DD;
+}
+.section_login img
+{
+    width: 100%;
+    height: 100%;
+}
+</style>
+
+<body style="height: 100%">
+     <main style="height: 100%;">
+         <section class="section_login">
+             <div class="cja_imagenLogin">
+                 <img src="{% static 'images/home.jpg' %}" alt="">
+             </div>
+             <div class="container_formLogin">
+                 <div class="inner_formLogin">
+                     <h1>
+                         Iniciar sesión
+                     </h1>
+     
+                     <form method="post">
+                          {% csrf_token %} <!--Toquén de seguirad para django -->
+                             <div class="form-group">
+                                 <input class="form-control" placeholder="Username" type="text" name="username" id="id_username" autofocus>
+                             </div>
+     
+                             <div class="form-group">
+                                  <input class="form-control" placeholder="Password" type="password" name="password" id="id_password"autofocus>
+                             </div>
+                             <button type="submit" class=" btn  btn-block" >Login</button>
+     
+                     </form>
+     
+                 </div>
+             </div>
+         </section>
+     </main>
+     </body>
+{% endblock %}
