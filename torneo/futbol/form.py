@@ -3,6 +3,23 @@ from futbol.models import RolArbitro, Pais, Torneo, Ciudad, Jugador, Estadio, Ar
 
 
 
+
+
+
+class FormularioRolArbitro(forms.ModelForm):
+    class Meta:
+        model = RolArbitro
+        fields = ['nombre']
+        labels = {'nombre':'Nombre'}
+        widget = {'nombre':forms.TextInput()}
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in iter(self.fields): # Recorremos los campos del modelo
+            self.fields[field].widget.attrs.update({
+                'class': 'form-control', 'autocomplete': 'off', 'spellcheck':'false'
+            })
+
 class FKPais(forms.ModelChoiceField):
     def label_from_instance(self, obj):
         return "{}".format(obj.nombre)

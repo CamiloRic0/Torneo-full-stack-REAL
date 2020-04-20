@@ -1,9 +1,7 @@
 from django.db import models
 
-
-
 class RolArbitro(models.Model):
-    id = models.IntegerField(
+    id = models.AutoField(
         primary_key = True
     )
     nombre = models.CharField(

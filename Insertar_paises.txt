@@ -1,4 +1,7 @@
 //truncate table futbol_pais, futbol_ciudad, futbol_torneo, futbol_equipo, futbol_estadio, futbol_empresa, futbol_partido, futbol_jugador_equipo, futbol_jugador_partido, futbol_otro_evento, futbol_evento_gol, futbol_evento_falta, futbol_arbitro, futbol_jugador, futbol_persona_natural, futbol_rolarbitro;
+
+1. Query para insertar paises en el orden(id, nombre, iso)
+
 INSERT INTO futbol_pais VALUES(1, 'Afganistán', 'AF');
 INSERT INTO futbol_pais VALUES(2, 'Islas Gland', 'AX');
 INSERT INTO futbol_pais VALUES(3, 'Albania', 'AL');
@@ -241,6 +244,8 @@ INSERT INTO futbol_pais VALUES(239, 'Zambia', 'ZM');
 INSERT INTO futbol_pais VALUES(240, 'Zimbabue', 'ZW');
 
 
+
+2. Query para insertar paises en el orden(id, iso, nombre)
 
 
 INSERT INTO futbol_pais VALUES(1, 'AF', 'Afganistán');

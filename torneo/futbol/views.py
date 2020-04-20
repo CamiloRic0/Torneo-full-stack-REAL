@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from futbol.models import Torneo, Ciudad, Jugador, Estadio, Arbitro, persona_natural, Equipo, Empresa, Jugador_Equipo, Partido, Jugador_Partido, Evento_Gol, Evento_Falta, Otro_Evento 
-from futbol.form import FormularioTorneo, FormularioCiudad, FormularioJugador, FormularioEstadio, FormularioArbitro, FormularioPersonaNatural, FormularioEquipo, FormularioEmpresa, FormularioJugadorEquipo, FormularioPartido, FormularioJugadorPartido, FormularioEventoGol, FormularioEventoFalta, FormularioOtroEvento 
+from futbol.models import Torneo, Ciudad, Jugador, Estadio, Arbitro, persona_natural, Equipo, Empresa, Jugador_Equipo, Partido, Jugador_Partido, Evento_Gol, Evento_Falta, Otro_Evento, RolArbitro
+from futbol.form import FormularioTorneo, FormularioCiudad, FormularioJugador, FormularioEstadio, FormularioArbitro, FormularioPersonaNatural, FormularioEquipo, FormularioEmpresa, FormularioJugadorEquipo, FormularioPartido, FormularioJugadorPartido, FormularioEventoGol, FormularioEventoFalta, FormularioOtroEvento, FormularioRolArbitro
 from django.views.generic.edit import CreateView, DeleteView
 from django.http import HttpResponse
 from django.urls import reverse_lazy
@@ -19,6 +19,15 @@ class Login (LoginRequiredMixin, generic.TemplateView):
 # Inserts
 
 
+
+class RolArbitro(LoginRequiredMixin, generic.CreateView):
+    model = RolArbitro
+    template_name="futbol/RolArbitro.html"
+    context_object_name="obj"
+    form_class=FormularioRolArbitro
+    success_url=reverse_lazy("futbol:home")
+    login_url = 'futbol:login'
+
 class InsertarTorneo(LoginRequiredMixin, generic.CreateView):
     model = Torneo
     template_name="futbol/InsertarTorneo.html"
@@ -26,6 +35,7 @@ class InsertarTorneo(LoginRequiredMixin, generic.CreateView):
     form_class=FormularioTorneo
     success_url=reverse_lazy("futbol:home")
     login_url = 'futbol:login'
+
 
 class InsertarCiudad(LoginRequiredMixin, generic.CreateView):
     model = Ciudad
